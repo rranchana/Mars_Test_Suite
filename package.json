@@ -1,15 +1,15 @@
 {
-    "name": "preqinendtoendtest",
-    "version": "1.0.0",
-    "description": "Testing suite for MARS",
-    "scripts": {
-        "wm-update": "webdriver-manager update",
-        "generate-reports": "allure generate Reports/xml --clean -o Reports/report || true",
-        "test": "protractor ./config/protractor.conf.js  --params.ENV=test"
-    },
-    "author": "QA team",
-    "devDependencies": {
-        "protractor": "^5.2.2"
-
-    }
+  "name": "preqinendtoendtest",
+  "version": "1.0.0",
+  "description": "Testing suite for MARS",
+  "scripts": {
+    "wm-update": "webdriver-manager update",
+    "wm-start": "webdriver-manager start",
+    "generate-reports": "allure generate Reports/xml --clean -o Reports/report || true",
+    "test": "protractor ./config/protractor.conf.js  --params.ENV=test"
+  },
+  "author": "QA team",
+  "devDependencies": {
+    "protractor": "^5.2.2"
+  }
 }
