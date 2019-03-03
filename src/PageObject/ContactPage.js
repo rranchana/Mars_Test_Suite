@@ -22,15 +22,15 @@ class ContactPage
         return element(by.css(this.contact_name)).sendKeys(name);
     }
 
-    confirmContactForm(){
+    confirmForm(){
         return element(by.css(this.contact_confirmation_check)).click();
     }
 
-    submitContactForm(){
+    submitForm(){
         return element(by.css(this.submit_contact_form)).click();
     }
 
-    getConfirmationMessage(){
+    getMessage(){
         return element(by.css(this.confirmation_message)).getText();
     }
 

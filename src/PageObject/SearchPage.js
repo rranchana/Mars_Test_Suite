@@ -9,11 +9,8 @@ class SearchPage
     }
 
 
-    goToHomePage(){
-        return browser.get(this.home_page);
-    }
 
-    SearchText(context) {
+    searchText(context) {
         return element(by.css(this.search_bar)).sendKeys(context);
     }
 
