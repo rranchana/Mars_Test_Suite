@@ -4,11 +4,11 @@ class HomePage {
     this.search_icon = '.search-icon';
     this.destination_menu = '.destination-menu';
     this.navigation_icon = element(by.css('.nav-icon'));
-    this.title = '.hero-title caps';
-    this.article = 'a.post-card';
+    this.title = '.hero-title';
+    this.article = element(by.css('a.post-card'));
     this.view_hotel = '.button-wIcon';
     this.subscription_error = '.js_email_registration_error';
-    this.newsletter_email = '.newsletter-registration__input';
+    this.newsletter_email = element(by.css('.newsletter-registration__input'));
     this.subscribe = '.input-submit';
     this.subscription_success_message = '.newsletter-registration__thanks';
   }
@@ -25,8 +25,8 @@ class HomePage {
     return element(by.linkText('Contact')).click();
   }
 
-  clickMenu() {
-    return BA.click(this.navigation_icon);
+  async clickMenu() {
+    await BA.click(this.navigation_icon);
   }
 
   getDestinationList() {
@@ -54,11 +54,12 @@ class HomePage {
   }
 
   getDestinationPageTitle() {
-    return element(by.css(this.title));
+    return element(by.css(this.title)).getAttribute('innerHTML');
   }
 
   clickFirstArticle() {
-    return element(by.css(this.article)).click();
+    BA.scrollIntoView(this.article)
+      return this.article.click();
   }
 
   clickFirstHotelInPage() {
@@ -74,7 +75,8 @@ class HomePage {
   }
 
   inputSubscriptionEmail(email) {
-    return element(by.css(this.newsletter_email)).sendKeys(email);
+    BA.waitForElementToBeVisible(this.newsletter_email)
+    return BA.sendKeys(this.newsletter_email,email)
   }
 
   getSubscriptionSuccessMessage() {

@@ -1,32 +1,40 @@
 class BrowserActions {
-  waitForElementToBeClickable(ele, timeout = 1200000) {
-    return browser.wait(EC.elementToBeClickable(ele), timeout);
-  }
+    waitForElementToBeClickable(ele, timeout = 1200000) {
 
-  waitForElementToBeVisible(ele, timeout = 1200000) {
-    return browser.wait(EC.presenceOf(ele), timeout);
-  }
+         return browser.wait(EC.elementToBeClickable(ele), timeout)
+    }
 
-  click(ele, timeout = 1200000) {
-    console.log('Coming in click');
-    return this.waitForElementToBeClickable(ele, timeout).then(() => ele.click());
-  }
+    waitForElementToBeVisible(ele, timeout = 1200000) {
+        return browser.wait(EC.presenceOf(ele), timeout);
+    }
 
-  sendKeys(ele, value, timeout = 1200000) {
-    return this.waitForElementToBeClickable(ele, timeout).then(() => ele.clear().sendKeys(value));
-  }
+    click(ele, timeout = 1200000) {
 
-  getText(ele, timeout = 1200000) {
-    return this.waitForElementToBeVisible(ele, timeout).then(() => ele.getText());
-  }
+        return this.waitForElementToBeClickable(ele, timeout).then(() => ele.click());
+    }
 
-  getPropertyValue(ele, prop, timeout = 1200000) {
-    return this.waitForElementToBeClickable(ele, timeout).then(() => ele.getAttribute(prop));
-  }
+    sendKeys(ele, value, timeout = 1200000) {
+        return this.waitForElementToBeClickable(ele, timeout).then(() => ele.clear().sendKeys(value));
+    }
 
-  waitForURLContain(urlExpected, timeout = 1200000) {
-    return browser.wait(EC.urlContains(urlExpected), timeout);
-  }
+    getText(ele, timeout = 1200000) {
+        return this.waitForElementToBeVisible(ele, timeout).then(() => ele.getText());
+    }
+
+    getPropertyValue(ele, prop, timeout = 1200000) {
+        return this.waitForElementToBeClickable(ele, timeout).then(() => ele.getAttribute(prop));
+    }
+
+    waitForURLContain(urlExpected, timeout = 1200000) {
+        return browser.wait(EC.urlContains(urlExpected), timeout);
+    }
+
+    scrollIntoView(el) {
+        browser.executeScript(function (el) {
+            el.scrollIntoView();
+        }, el.getWebElement());
+    }
+
 }
 
 module.exports = new BrowserActions();

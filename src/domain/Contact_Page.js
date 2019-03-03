@@ -1,5 +1,5 @@
 'use strict';
-let contact = require('./pages/ContactPage');
+let contact = require('../pages/ContactPage');
 
 class Contact {
   fillContact(email, message, name) {
